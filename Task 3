@@ -1,0 +1,51 @@
+	print("Места:", ", ".join(person[2]))
+
+
+def task_4():
+	print("Количество мест:", len(person[2]))
+
+
+def task_5():
+	print("Служит Империи:", 'Звезда Смерти' in person[2])
+
+
+def task_6():
+	print("Цвет светового меча:", person[3].get('световой меч'))
+
+
+def task_7():
+	person[1] = 42
+	print("Новый возраст:", person[1])
+
+
+def task_8():
+	if 'Эндор' not in person[2]:
+		person[2].append('Эндор')
+	print("Обновленный список мест:", person[2])
+
+
+def task_9():
+	if person[3].get('ранг') == 'лорд ситхов':
+		print("Энакин - лорд ситхов")
+	else:
+		print("Энакин - джедай")
+
+
+def task_10():
+	if len(person[2]) > 4:
+		print("Энакин побывал во многих местах")
+	else:
+		print("Энакин не так много путешествовал")
+
+
+while True:
+	user_input = input("Введите номер задания (или 'выход' для завершения): ")
+
+	if user_input.lower() == 'выход':
+		print("Программа завершена.")
+		break
+	elif user_input.isdigit() and 1 <= int(user_input) <= 10:
+		task_number = int(user_input)
+		globals()[f"task_{task_number}"]()
+	else:
+		print("Некорректный ввод. Пожалуйста, введите число от 1 до 10 или 'выход'.")
