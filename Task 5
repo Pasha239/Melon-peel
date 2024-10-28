@@ -1,0 +1,28 @@
+# Функция для обработки введённых предметов
+def process_items(str_):
+    valid_items = {"меч", "лук", "топор", "щит", "зелье"}
+    items = str_.split()
+
+    for item in items:
+        if item not in valid_items:
+            print("Неверный предмет, попробуйте снова")
+            return None
+    return set(items)
+
+
+# Основная программа
+common_items = None
+for i in range(3):
+    while True:
+        user_input = input("Введите предметы через пробел: ")
+        items_set = process_items(user_input)
+
+
+        if items_set is not None:
+            if common_items is None:
+                common_items = items_set
+            else:
+                common_items &= items_set
+            break
+
+print(len(common_items))
