@@ -1,0 +1,18 @@
+# Your code here (˶ˆᗜˆ˵)
+
+x, y = 0, 0
+
+N = int(input("Введите N: "))
+
+for i in range(N):
+    direction = input(f"Ход {i + 1}: ").strip().lower()
+    if direction == "вверх":
+        y += 1
+    elif direction == "вниз":
+        y -= 1
+    elif direction == "вправо":
+        x += 1
+    elif direction == "влево":
+        x -= 1
+
+print(abs(x) + abs(y))
