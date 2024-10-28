@@ -1,0 +1,28 @@
+user_input = input()
+
+def replace_artifacts(str_):
+    str_ = str_.strip()
+    str_ = str_.replace("-", "_").replace(" ", "_")
+
+    while "__" in str_:
+        str_ = str_.replace("__", "_")
+
+    while len(str_) > 0 and str_[0].isdigit():
+        str_ = str_[1:]
+
+    new_str = ""
+    for i, char in enumerate(str_):
+        if char.isupper() and i > 0:
+            new_str += "_" + char.lower()
+        else:
+            new_str += char.lower()
+    str_ = new_str
+
+    if not all(c.isalnum() or c == "_" for c in str_):
+        return "Введено некорректное имя переменной"
+
+    return str_
+
+
+user_input = input("Введите название переменной: ")
+print(replace_artifacts(user_input))
