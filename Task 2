@@ -1,0 +1,55 @@
+products = {
+    "001": {"name": "Батончик", "price": 70},
+    "002": {"name": "Вода", "price": 45},
+    "003": {"name": "Газировка", "price": 64},
+    "004": {"name": "Булочка", "price": 33}
+}
+
+
+def display_products():
+    print("ID   ProductName   Цена")
+    print("------------------------")
+    for id, details in products.items():
+        print(f"{id}  {details['name']:<10}   {details['price']}")
+
+
+display_products()
+
+product_id = input("Введите ID желаемого товара: ")
+
+if product_id == "ОТМЕНА":
+    print("Программа завершена.")
+else:
+    if product_id in products:
+        price = products[product_id]["price"]
+        print(f"Внесите {price} тугриков")
+
+
+        amount_needed = price
+
+        while amount_needed > 0:
+            money_input = input("Введите сумму (10, 50, 100, 500): ")
+
+            if money_input == "ОТМЕНА":
+                print("Программа завершена.")
+                break
+
+            try:
+                money = int(money_input)
+            except ValueError:
+                print("Внесена фальшивая купюра")
+                continue
+
+            if money not in [10, 50, 100, 500]:
+                print("Внесена фальшивая купюра")
+                continue
+
+            if money >= amount_needed:
+                change = money - amount_needed
+                print(f"Ваша сдача: {change} тугриков")
+                break
+            else:
+                amount_needed -= money
+                print(f"Осталось внести {amount_needed} тугриков")
+    else:
+        print("Товара с таким ID не существует")
